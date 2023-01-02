@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -28,10 +29,10 @@ class _MyAppState extends State<MyApp> {
                     color: Colors.yellowAccent,
                     width: 200,
                     height: 200,
+                    padding: const EdgeInsets.all(10.0),
                     margin: const EdgeInsets.all(10.0),
                     child: const Center(
-                      child: Text('플러터 공부하기',
-                          maxLines: 1,
+                      child: AutoSizeText('플러터 공부하기',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 20, color: Colors.black)),
                     ),
@@ -39,11 +40,11 @@ class _MyAppState extends State<MyApp> {
                   Container(
                     color: Colors.yellow,
                     width: 200,
+                    padding: const EdgeInsets.all(10.0),
                     height: 200,
                     margin: const EdgeInsets.all(10.0),
                     child: const Center(
-                      child: Text('컨플루언스&지라 도입',
-                          maxLines: 1,
+                      child: AutoSizeText('컨플루언스&지라 도입',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 20, color: Colors.black)),
                     ),
@@ -51,11 +52,11 @@ class _MyAppState extends State<MyApp> {
                   Container(
                     color: Colors.amberAccent,
                     width: 200,
+                    padding: const EdgeInsets.all(10.0),
                     height: 200,
                     margin: const EdgeInsets.all(10.0),
                     child: const Center(
-                      child: Text('Github Projects 공부',
-                          maxLines: 1,
+                      child: AutoSizeText('Github Projects 공부',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 20, color: Colors.black)),
                     ),
@@ -69,10 +70,10 @@ class _MyAppState extends State<MyApp> {
                     color: Colors.deepOrange,
                     width: 200,
                     height: 200,
+                    padding: const EdgeInsets.all(10.0),
                     margin: const EdgeInsets.all(10.0),
                     child: const Center(
-                      child: Text('아이디어 구상',
-                          maxLines: 1,
+                      child: AutoSizeText('아이디어 구상',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 20, color: Colors.black)),
                     ),
@@ -81,10 +82,10 @@ class _MyAppState extends State<MyApp> {
                     color: Colors.red,
                     width: 200,
                     height: 200,
+                    padding: const EdgeInsets.all(10.0),
                     margin: const EdgeInsets.all(10.0),
                     child: const Center(
-                      child: Text('공부 로드맵',
-                          maxLines: 1,
+                      child: AutoSizeText('공부 로드맵',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 20, color: Colors.black)),
                     ),
@@ -94,9 +95,9 @@ class _MyAppState extends State<MyApp> {
                     width: 200,
                     height: 200,
                     margin: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: const Center(
-                      child: Text('서비스명 정하기',
-                          maxLines: 1,
+                      child: AutoSizeText('서비스명 정하기',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 20, color: Colors.black)),
                     ),
@@ -110,10 +111,10 @@ class _MyAppState extends State<MyApp> {
                     color: Colors.deepOrangeAccent,
                     width: 200,
                     height: 200,
+                    padding: const EdgeInsets.all(10.0),
                     margin: const EdgeInsets.all(10.0),
                     child: const Center(
-                      child: Text('파이어베이스 연동',
-                          maxLines: 1,
+                      child: AutoSizeText('파이어베이스 연동',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 20, color: Colors.black)),
                     ),
@@ -121,11 +122,11 @@ class _MyAppState extends State<MyApp> {
                   Container(
                     color: Colors.orange,
                     width: 200,
+                    padding: const EdgeInsets.all(10.0),
                     height: 200,
                     margin: const EdgeInsets.all(10.0),
                     child: const Center(
-                      child: Text('애드몹 연동',
-                          maxLines: 1,
+                      child: AutoSizeText('애드몹 연동',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 20, color: Colors.black)),
                     ),
@@ -133,11 +134,11 @@ class _MyAppState extends State<MyApp> {
                   Container(
                     color: Colors.orangeAccent,
                     width: 200,
+                    padding: const EdgeInsets.all(10.0),
                     height: 200,
                     margin: const EdgeInsets.all(10.0),
                     child: const Center(
-                      child: Text('VS CODE 알아보기',
-                          maxLines: 1,
+                      child: AutoSizeText('VS CODE 알아보기',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 20, color: Colors.black)),
                     ),
