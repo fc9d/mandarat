@@ -1,6 +1,18 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:mandarat/mandarat_model.dart';
+
+List mandaratModelList = [
+  MandaratModel('플러터 공부하기'),
+  MandaratModel('플러터 공부하기'),
+  MandaratModel('플러터 공부하기'),
+  MandaratModel('플러터 공부하기 asdddd'),
+  MandaratModel('플러터 공부하기'),
+  MandaratModel('플러터 공부하기'),
+  MandaratModel('플러터 공부하기'),
+  MandaratModel('플러터 공부하기'),
+  MandaratModel('플러터 공부하기')
+];
 
 void main() {
   logger.d('안녕 플러터');
@@ -32,148 +44,63 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late double fixedSize;
-
   @override
   Widget build(BuildContext context) {
-    if (MediaQuery.of(context).size.width >
-        MediaQuery.of(context).size.height) {
-      fixedSize = MediaQuery.of(context).size.height / 3 - 10;
-    } else {
-      fixedSize = MediaQuery.of(context).size.width / 3 - 10;
-    }
-
     return Scaffold(
-      body: Center(
-        child: Column(
+      appBar: AppBar(
+        title: const Text('만다라트'),
+      ),
+      body: LayoutBuilder(
+        builder: (context, constraints) => Center(
+            child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: fixedSize,
-                  height: fixedSize,
-                  color: Colors.yellowAccent,
-                  padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.all(5),
-                  child: const Center(
-                    child: AutoSizeText('플러터 공부하기',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, color: Colors.black)),
-                  ),
-                ),
-                Container(
-                  width: fixedSize,
-                  height: fixedSize,
-                  color: Colors.yellowAccent,
-                  padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.all(5),
-                  child: const Center(
-                    child: AutoSizeText('플러터 공부하기',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, color: Colors.black)),
-                  ),
-                ),
-                Container(
-                  width: fixedSize,
-                  height: fixedSize,
-                  color: Colors.yellowAccent,
-                  padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.all(5),
-                  child: const Center(
-                    child: AutoSizeText('플러터 공부하기',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, color: Colors.black)),
-                  ),
-                ),
+                _getContainer(constraints, mandaratModelList[0].text),
+                _getContainer(constraints, mandaratModelList[1].text),
+                _getContainer(constraints, mandaratModelList[2].text),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: fixedSize,
-                  height: fixedSize,
-                  color: Colors.yellowAccent,
-                  padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.all(5),
-                  child: const Center(
-                    child: AutoSizeText('플러터 공부하기',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, color: Colors.black)),
-                  ),
-                ),
-                Container(
-                  width: fixedSize,
-                  height: fixedSize,
-                  color: Colors.yellowAccent,
-                  padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.all(5),
-                  child: const Center(
-                    child: AutoSizeText('플러터 공부하기',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, color: Colors.black)),
-                  ),
-                ),
-                Container(
-                  width: fixedSize,
-                  height: fixedSize,
-                  color: Colors.yellowAccent,
-                  padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.all(5),
-                  child: const Center(
-                    child: AutoSizeText('플러터 공부하기',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, color: Colors.black)),
-                  ),
-                ),
+                _getContainer(constraints, mandaratModelList[3].text),
+                _getContainer(constraints, mandaratModelList[4].text),
+                _getContainer(constraints, mandaratModelList[5].text),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: fixedSize,
-                  height: fixedSize,
-                  color: Colors.yellowAccent,
-                  padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.all(5),
-                  child: const Center(
-                    child: AutoSizeText('플러터 공부하기',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, color: Colors.black)),
-                  ),
-                ),
-                Container(
-                  width: fixedSize,
-                  height: fixedSize,
-                  color: Colors.yellowAccent,
-                  padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.all(5),
-                  child: const Center(
-                    child: AutoSizeText('플러터 공부하기',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, color: Colors.black)),
-                  ),
-                ),
-                Container(
-                  width: fixedSize,
-                  height: fixedSize,
-                  color: Colors.yellowAccent,
-                  padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.all(5),
-                  child: const Center(
-                    child: AutoSizeText('플러터 공부하기',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 20, color: Colors.black)),
-                  ),
-                ),
+                _getContainer(constraints, mandaratModelList[6].text),
+                _getContainer(constraints, mandaratModelList[7].text),
+                _getContainer(constraints, mandaratModelList[8].text),
               ],
             ),
           ],
-        ),
+        )),
       ),
     );
   }
+}
+
+Container _getContainer(BoxConstraints constraints, String text) {
+  var size = constraints.maxWidth > constraints.maxHeight
+      ? constraints.maxHeight / 3 - 10
+      : constraints.maxWidth / 3 - 10;
+  return Container(
+    width: size,
+    height: size,
+    color: Colors.lightBlue,
+    padding: const EdgeInsets.all(10.0),
+    margin: const EdgeInsets.all(5),
+    child: Center(
+      child: Text(text,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 14 * (size / 128), color: Colors.white)),
+    ),
+  );
 }
