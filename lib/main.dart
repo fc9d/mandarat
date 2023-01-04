@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -27,7 +25,6 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatefulWidget {
-
   const Home({super.key});
 
   @override
@@ -41,7 +38,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     if (MediaQuery.of(context).size.width >
         MediaQuery.of(context).size.height) {
-
       fixedSize = MediaQuery.of(context).size.height / 3 - 10;
     } else {
       fixedSize = MediaQuery.of(context).size.width / 3 - 10;
@@ -53,14 +49,14 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   width: fixedSize,
                   height: fixedSize,
                   color: Colors.yellowAccent,
                   padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  margin: const EdgeInsets.all(5),
                   child: const Center(
                     child: AutoSizeText('플러터 공부하기',
                         textAlign: TextAlign.center,
@@ -72,7 +68,7 @@ class _HomeState extends State<Home> {
                   height: fixedSize,
                   color: Colors.yellowAccent,
                   padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  margin: const EdgeInsets.all(5),
                   child: const Center(
                     child: AutoSizeText('플러터 공부하기',
                         textAlign: TextAlign.center,
@@ -84,7 +80,7 @@ class _HomeState extends State<Home> {
                   height: fixedSize,
                   color: Colors.yellowAccent,
                   padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  margin: const EdgeInsets.all(5),
                   child: const Center(
                     child: AutoSizeText('플러터 공부하기',
                         textAlign: TextAlign.center,
@@ -94,14 +90,14 @@ class _HomeState extends State<Home> {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   width: fixedSize,
                   height: fixedSize,
                   color: Colors.yellowAccent,
                   padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  margin: const EdgeInsets.all(5),
                   child: const Center(
                     child: AutoSizeText('플러터 공부하기',
                         textAlign: TextAlign.center,
@@ -113,7 +109,7 @@ class _HomeState extends State<Home> {
                   height: fixedSize,
                   color: Colors.yellowAccent,
                   padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  margin: const EdgeInsets.all(5),
                   child: const Center(
                     child: AutoSizeText('플러터 공부하기',
                         textAlign: TextAlign.center,
@@ -125,7 +121,7 @@ class _HomeState extends State<Home> {
                   height: fixedSize,
                   color: Colors.yellowAccent,
                   padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  margin: const EdgeInsets.all(5),
                   child: const Center(
                     child: AutoSizeText('플러터 공부하기',
                         textAlign: TextAlign.center,
@@ -135,14 +131,14 @@ class _HomeState extends State<Home> {
               ],
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   width: fixedSize,
                   height: fixedSize,
                   color: Colors.yellowAccent,
                   padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  margin: const EdgeInsets.all(5),
                   child: const Center(
                     child: AutoSizeText('플러터 공부하기',
                         textAlign: TextAlign.center,
@@ -154,7 +150,7 @@ class _HomeState extends State<Home> {
                   height: fixedSize,
                   color: Colors.yellowAccent,
                   padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  margin: const EdgeInsets.all(5),
                   child: const Center(
                     child: AutoSizeText('플러터 공부하기',
                         textAlign: TextAlign.center,
@@ -166,7 +162,7 @@ class _HomeState extends State<Home> {
                   height: fixedSize,
                   color: Colors.yellowAccent,
                   padding: const EdgeInsets.all(10.0),
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  margin: const EdgeInsets.all(5),
                   child: const Center(
                     child: AutoSizeText('플러터 공부하기',
                         textAlign: TextAlign.center,
