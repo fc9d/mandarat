@@ -1,18 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:mandarat/mandarat_model.dart';
-
-List mandaratModelList = [
-  MandaratModel('플러터 공부하기'),
-  MandaratModel('플러터 공부하기'),
-  MandaratModel('플러터 공부하기'),
-  MandaratModel('플러터 공부하기 asdddd'),
-  MandaratModel('플러터 공부하기'),
-  MandaratModel('플러터 공부하기'),
-  MandaratModel('플러터 공부하기'),
-  MandaratModel('플러터 공부하기'),
-  MandaratModel('플러터 공부하기')
-];
+import 'package:mandarat/mandarat_repository.dart';
 
 void main() {
   logger.d('안녕 플러터');
@@ -46,62 +34,41 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-
+    List mandaratList = getDummyList();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('만다라트'),
+        title: const Text('만다라트 그리드'),
       ),
       body: LayoutBuilder(
-        builder: (context, constraints) => Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _getContainer(constraints, mandaratModelList[0].text),
-                _getContainer(constraints, mandaratModelList[1].text),
-                _getContainer(constraints, mandaratModelList[2].text),
-              ],
+        builder: (context, constraints) =>
+            Center(
+              child: GridView.builder(
+                shrinkWrap: true,
+                padding: const EdgeInsets.all(5),
+                itemCount: mandaratList.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                  childAspectRatio: 1,
+                  crossAxisSpacing: 5,
+                  mainAxisSpacing: 5,
+                ),
+                itemBuilder: (context, index) {
+                  return Container(
+                    color: Colors.lightBlue,
+                    child: Center(
+                      child: Text(mandaratList[index].text,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 14 * (constraints.maxWidth / 3 / 128),
+                              color: Colors.white)),
+                    ),
+                  );
+                },
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _getContainer(constraints, mandaratModelList[3].text),
-                _getContainer(constraints, mandaratModelList[4].text),
-                _getContainer(constraints, mandaratModelList[5].text),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _getContainer(constraints, mandaratModelList[6].text),
-                _getContainer(constraints, mandaratModelList[7].text),
-                _getContainer(constraints, mandaratModelList[8].text),
-              ],
-            ),
-          ],
-        )),
       ),
     );
   }
 }
 
-Container _getContainer(BoxConstraints constraints, String text) {
-  var size = constraints.maxWidth > constraints.maxHeight
-      ? constraints.maxHeight / 3 - 10
-      : constraints.maxWidth / 3 - 10;
-  return Container(
-    width: size,
-    height: size,
-    color: Colors.lightBlue,
-    padding: const EdgeInsets.all(10.0),
-    margin: const EdgeInsets.all(5),
-    child: Center(
-      child: Text(text,
-          overflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 14 * (size / 128), color: Colors.white)),
-    ),
-  );
-}
