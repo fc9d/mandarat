@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:mandarat/mandarat_repository.dart';
+import 'package:mandarat/mandarat_model.dart';
 
 void main() {
   logger.d('안녕 플러터');
@@ -34,41 +34,40 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    List mandaratList = getDummyList();
+    var mandarat = Mandarat.getDummy();
+    List<Mandarat> mandaratList = mandarat.getList();
     return Scaffold(
       appBar: AppBar(
         title: const Text('만다라트 그리드'),
       ),
       body: LayoutBuilder(
-        builder: (context, constraints) =>
-            Center(
-              child: GridView.builder(
-                shrinkWrap: true,
-                padding: const EdgeInsets.all(5),
-                itemCount: mandaratList.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  childAspectRatio: 1,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
-                ),
-                itemBuilder: (context, index) {
-                  return Container(
-                    color: Colors.lightBlue,
-                    child: Center(
-                      child: Text(mandaratList[index].text,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 14 * (constraints.maxWidth / 3 / 128),
-                              color: Colors.white)),
-                    ),
-                  );
-                },
-              ),
+        builder: (context, constraints) => Center(
+          child: GridView.builder(
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(5),
+            itemCount: mandaratList.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              childAspectRatio: 1,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 5,
             ),
+            itemBuilder: (context, index) {
+              return Container(
+                color: Colors.lightBlue,
+                child: Center(
+                  child: Text(mandaratList[index].keyword,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 14 * (constraints.maxWidth / 3 / 128),
+                          color: Colors.white)),
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }
 }
-
