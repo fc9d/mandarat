@@ -1,6 +1,6 @@
 import 'mandarat_model.dart';
 
-List getDummyList() {
+List<MandaratModel> getDummyList() {
   return [
     MandaratModel('플러터 공부하기'),
     MandaratModel('플러터 공부하기'),
@@ -10,6 +10,6 @@ List getDummyList() {
     MandaratModel('플러터 공부하기'),
     MandaratModel('플러터 공부하기'),
     MandaratModel('플러터 공부하기'),
-    MandaratModel('플러터 공부하기')
+    MandaratModel('플러터 공부하기'),
   ];
 }
