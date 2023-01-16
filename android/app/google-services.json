@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "453853196321",
+    "project_id": "mandarat-e382d",
+    "storage_bucket": "mandarat-e382d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453853196321:android:4c4bced31c63a394dff360",
+        "android_client_info": {
+          "package_name": "com.icedmak.mandarat.mandarat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453853196321-3oos0vs36c4qbf6uf2cf02642inv04tk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArECEUVdiQBIuIj2etZpoVN97qSxHTUDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453853196321-3oos0vs36c4qbf6uf2cf02642inv04tk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
