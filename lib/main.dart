@@ -1,9 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:mandarat/mandarat_model.dart';
 
-void main() {
-  logger.d('안녕 플러터');
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -34,6 +37,12 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
+    DatabaseReference starCountRef =
+    FirebaseDatabase.instance.ref('mandarat');
+    starCountRef.onValue.listen((DatabaseEvent event) {
+      final data = event.snapshot.value;
+      print(data);
+    });
     var mandarat = Mandarat.getDummy();
     List<Mandarat> mandaratList = mandarat.getList();
     return Scaffold(
