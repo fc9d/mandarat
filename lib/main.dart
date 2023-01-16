@@ -37,8 +37,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    DatabaseReference starCountRef =
-    FirebaseDatabase.instance.ref('mandarat');
+    DatabaseReference starCountRef = FirebaseDatabase.instance.ref('mandarat');
     starCountRef.onValue.listen((DatabaseEvent event) {
       final data = event.snapshot.value;
       print(data);
