@@ -1,10 +1,8 @@
-import 'dart:collection';
-import 'dart:convert';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:mandarat/models/mandarat_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,20 +36,18 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late DatabaseReference ref;
-  late DataSnapshot snapshot;
-  List<String> items = [];
+  List<MandaratModel> items = [];
 
   @override
   void initState() {
-
     super.initState();
 
     DatabaseReference ref = FirebaseDatabase.instance.ref('mandarat');
     ref.onValue.listen((event) {
       setState(() {
-        snapshot = event.snapshot;
-        for(var item in snapshot.children) {
-          items.add(item.children.last.value as String);
+        for (var mandarat in event.snapshot.children) {
+          items.add(MandaratModel.fromJson(
+              Map<String, dynamic>.from(mandarat.value as Map)));
         }
       });
     });
@@ -68,7 +64,7 @@ class _HomeState extends State<Home> {
           child: GridView.builder(
             shrinkWrap: true,
             padding: const EdgeInsets.all(5),
-            itemCount: snapshot.children.length,
+            itemCount: items.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               childAspectRatio: 1,
@@ -79,7 +75,7 @@ class _HomeState extends State<Home> {
               return Container(
                 color: Colors.lightBlue,
                 child: Center(
-                  child: Text(items[index],
+                  child: Text(items[index].keyword,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       style: TextStyle(
