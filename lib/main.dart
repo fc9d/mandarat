@@ -1,8 +1,10 @@
+import 'dart:collection';
+import 'dart:convert';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:mandarat/mandarat_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,15 +37,28 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late DatabaseReference ref;
+  late DataSnapshot snapshot;
+  List<String> items = [];
+
+  @override
+  void initState() {
+
+    super.initState();
+
+    DatabaseReference ref = FirebaseDatabase.instance.ref('mandarat');
+    ref.onValue.listen((event) {
+      setState(() {
+        snapshot = event.snapshot;
+        for(var item in snapshot.children) {
+          items.add(item.children.last.value as String);
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    DatabaseReference starCountRef = FirebaseDatabase.instance.ref('mandarat');
-    starCountRef.onValue.listen((DatabaseEvent event) {
-      final data = event.snapshot.value;
-      print(data);
-    });
-    var mandarat = Mandarat.getDummy();
-    List<Mandarat> mandaratList = mandarat.getList();
     return Scaffold(
       appBar: AppBar(
         title: const Text('만다라트 그리드'),
@@ -53,7 +68,7 @@ class _HomeState extends State<Home> {
           child: GridView.builder(
             shrinkWrap: true,
             padding: const EdgeInsets.all(5),
-            itemCount: mandaratList.length,
+            itemCount: snapshot.children.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               childAspectRatio: 1,
@@ -64,7 +79,7 @@ class _HomeState extends State<Home> {
               return Container(
                 color: Colors.lightBlue,
                 child: Center(
-                  child: Text(mandaratList[index].keyword,
+                  child: Text(items[index],
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       style: TextStyle(
