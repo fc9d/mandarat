@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:mandarat/models/mandarat_model.dart';
 
 class MandartView extends StatefulWidget {
+  const MandartView({super.key});
+
   @override
   State<MandartView> createState() => _MandartViewState();
 }

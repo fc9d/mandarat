@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class BottomBar extends StatelessWidget {
   final int selectedIndex;
-  ValueChanged<int> onClicked;
+  final ValueChanged<int> onClicked;
 
-  BottomBar({
+  const BottomBar({
     super.key,
     required this.selectedIndex,
     required this.onClicked,
