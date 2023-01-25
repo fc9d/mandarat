@@ -2,14 +2,14 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:mandarat/models/mandarat_model.dart';
 
-class MandartView extends StatefulWidget {
-  const MandartView({super.key});
+class MandaratView extends StatefulWidget {
+  const MandaratView({super.key});
 
   @override
-  State<MandartView> createState() => _MandartViewState();
+  State<MandaratView> createState() => _MandaratViewState();
 }
 
-class _MandartViewState extends State<MandartView> {
+class _MandaratViewState extends State<MandaratView> {
   late DatabaseReference ref;
   List<MandaratModel> items = [];
 
