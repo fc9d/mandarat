@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:mandarat/models/mandarat_model.dart';
+import 'package:mandarat/widgets/bottom_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +39,13 @@ class _HomeState extends State<Home> {
   late DatabaseReference ref;
   List<MandaratModel> items = [];
 
+  int selectIndex = 0;
+  void onClicked(int index) {
+    setState(() {
+      selectIndex = index;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -58,6 +66,10 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('만다라트 그리드'),
+      ),
+      bottomNavigationBar: BottomBar(
+        selectedIndex: selectIndex,
+        onClicked: onClicked,
       ),
       body: LayoutBuilder(
         builder: (context, constraints) => Center(
