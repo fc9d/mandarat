@@ -20,6 +20,7 @@ class _MandaratViewState extends State<MandaratView> {
     DatabaseReference ref = FirebaseDatabase.instance.ref('mandarat');
     ref.onValue.listen((event) {
       setState(() {
+        items.clear();
         for (var mandarat in event.snapshot.children) {
           items.add(MandaratModel.fromJson(
               Map<String, dynamic>.from(mandarat.value as Map)));
