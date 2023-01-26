@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -54,9 +56,6 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    // Load ads.
-    // 배너 샘플
-    // ca-app-pub-3940256099942544/6300978111
 
     MobileAds.instance.updateRequestConfiguration(RequestConfiguration(
         testDeviceIds: [
@@ -64,7 +63,9 @@ class _HomeState extends State<Home> {
           '여기에 너 디바이스 아이디 넣어'
         ]));
     myBanner = BannerAd(
-      adUnitId: 'ca-app-pub-3940256099942544/6300978111',
+      adUnitId: Platform.isAndroid
+          ? 'ca-app-pub-3940256099942544/6300978111'
+          : 'ca-app-pub-3940256099942544/2934735716',
       size: AdSize.banner,
       request: AdRequest(),
       listener: BannerAdListener(
