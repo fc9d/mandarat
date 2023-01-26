@@ -34,6 +34,7 @@ class _MandaratViewState extends State<MandaratView> {
     return LayoutBuilder(
       builder: (context, constraints) => Center(
         child: GridView.builder(
+          primary: false,
           shrinkWrap: true,
           padding: const EdgeInsets.all(5),
           itemCount: items.length,
