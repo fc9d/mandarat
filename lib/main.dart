@@ -105,7 +105,8 @@ class _HomeState extends State<Home> {
       body: Column(
         children: [
           views[selectIndex],
-          Container(
+          Expanded(child: Container()),
+          SizedBox(
             height: 100,
             child: AdWidget(ad: myBanner),
           ),
