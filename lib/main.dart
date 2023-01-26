@@ -2,10 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:logger/logger.dart';
-import 'package:mandarat/screens/mandarat_screen.dart';
-import 'package:mandarat/screens/map_screen.dart';
+import 'package:mandarat/models/screen_model.dart';
 import 'package:mandarat/widgets/banner_widget.dart';
-import 'package:mandarat/widgets/bottom_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,36 +37,38 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<String> titles = ['만다라트 그리드', '지도'];
-  List<Widget> views = [MandaratView(), MapScreen()];
-
-  int selectIndex = 0;
-
-  void onClicked(int index) {
-    setState(() {
-      selectIndex = index;
-    });
-  }
+  final List<ScreenModel> _screens = ScreenModel.screens();
+  int _index = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(titles[selectIndex]),
+        title: Text(_screens[_index].title),
       ),
-      bottomNavigationBar: BottomBar(
-        selectedIndex: selectIndex,
-        onClicked: onClicked,
-      ),
+      bottomNavigationBar: buildBottomNavigationBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            child: views[selectIndex],
+            child: _screens[_index].screen,
           ),
           const BannerWidget(),
         ],
       ),
+    );
+  }
+
+  BottomNavigationBar buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      items: _screens
+          .map((e) => BottomNavigationBarItem(
+                icon: e.icon,
+                label: e.title,
+              ))
+          .toList(),
+      currentIndex: _index,
+      onTap: (value) => setState(() => _index = value),
     );
   }
 }
