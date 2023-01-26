@@ -38,20 +38,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final List<ScreenModel> _screens = ScreenModel.screens();
-  int _index = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_screens[_index].title),
+        title: Text(_screens.firstWhere((element) => element.isSelected).title),
       ),
       bottomNavigationBar: buildBottomNavigationBar(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            child: _screens[_index].screen,
+            child: _screens.firstWhere((element) => element.isSelected).screen,
           ),
           const BannerWidget(),
         ],
@@ -59,16 +58,22 @@ class _HomeState extends State<Home> {
     );
   }
 
-  BottomNavigationBar buildBottomNavigationBar() {
-    return BottomNavigationBar(
-      items: _screens
-          .map((e) => BottomNavigationBarItem(
+  BottomNavigationBar buildBottomNavigationBar() => BottomNavigationBar(
+        items: _screens
+            .map(
+              (e) => BottomNavigationBarItem(
                 icon: e.icon,
                 label: e.title,
-              ))
-          .toList(),
-      currentIndex: _index,
-      onTap: (value) => setState(() => _index = value),
-    );
-  }
+              ),
+            )
+            .toList(),
+        currentIndex: _screens.indexWhere((element) => element.isSelected),
+        elevation: 15,
+        onTap: (index) => setState(() {
+          for (ScreenModel screenModel in _screens) {
+            screenModel.isSelected = false;
+          }
+          _screens[index].isSelected = true;
+        }),
+      );
 }

@@ -7,20 +7,27 @@ class ScreenModel {
   String title;
   Widget screen;
   Icon icon;
+  bool isSelected;
 
-  ScreenModel(this.title, this.screen, this.icon);
+  ScreenModel({
+    required this.title,
+    required this.screen,
+    required this.icon,
+    this.isSelected = false,
+  });
 
   static List<ScreenModel> screens() {
     return [
       ScreenModel(
-        '만다라트',
-        const MandaratView(),
-        const Icon(Icons.grid_view),
+        title: '만다라트',
+        screen: const MandaratView(),
+        icon: const Icon(Icons.grid_view),
+        isSelected: true,
       ),
       ScreenModel(
-        '지도',
-        const MapScreen(),
-        const Icon(Icons.map),
+        title: '지도',
+        screen: const MapScreen(),
+        icon: const Icon(Icons.map),
       ),
     ];
   }
