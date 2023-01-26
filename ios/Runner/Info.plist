@@ -53,5 +53,7 @@
 	</array>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>himdl</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-5557720083542920~5879516638</string>
 </dict>
 </plist>

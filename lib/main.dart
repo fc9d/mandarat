@@ -57,11 +57,13 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
 
-    MobileAds.instance.updateRequestConfiguration(RequestConfiguration(
+    MobileAds.instance.updateRequestConfiguration(
+      RequestConfiguration(
         testDeviceIds: [
           '6F509068462AD4F9ADFE464ACF4EFFD9',
-          '여기에 너 디바이스 아이디 넣어'
-        ]));
+        ],
+      ),
+    );
     myBanner = BannerAd(
       adUnitId: Platform.isAndroid
           ? 'ca-app-pub-3940256099942544/6300978111'
