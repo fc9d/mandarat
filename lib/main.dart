@@ -103,9 +103,9 @@ class _HomeState extends State<Home> {
       ),
       // body: views[selectIndex],
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           views[selectIndex],
-          Expanded(child: Container()),
           SizedBox(
             height: 100,
             child: AdWidget(ad: myBanner),
